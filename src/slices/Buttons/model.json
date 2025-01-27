@@ -1,0 +1,73 @@
+{
+  "id": "buttons",
+  "type": "SharedSlice",
+  "name": "Buttons",
+  "description": "Buttons",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "buttons": {
+          "type": "Group",
+          "config": {
+            "label": "Buttons",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "width": {
+                "type": "Select",
+                "config": {
+                  "label": "Width",
+                  "placeholder": "",
+                  "options": [
+                    "Auto",
+                    "25%",
+                    "50%",
+                    "75%",
+                    "100%"
+                  ],
+                  "default_value": "Auto"
+                }
+              },
+              "style": {
+                "type": "Select",
+                "config": {
+                  "label": "Style",
+                  "placeholder": "",
+                  "options": [
+                    "Fill",
+                    "Outline"
+                  ],
+                  "default_value": "Fill"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

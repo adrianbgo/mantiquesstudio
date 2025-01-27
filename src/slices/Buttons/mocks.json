@@ -1,0 +1,55 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "memory",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "b27ee7b1-a282-4adc-ab46-a5f93deffd3f",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "nuts"
+									}
+								}
+							],
+							[
+								"width",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "Auto",
+									"type": "Select"
+								}
+							],
+							[
+								"style",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "Fill",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
