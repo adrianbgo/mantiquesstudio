@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "tent",
+				"type": "Text"
+			},
+			"email_address": {
+				"__TYPE__": "FieldContent",
+				"value": "industrial",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

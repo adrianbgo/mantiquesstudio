@@ -1,0 +1,35 @@
+@value colors: "../../app/styles/vars.css";
+@value black,primary,primary-dark,danger,white from colors;
+
+.button {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  &>a {
+    text-decoration: none;
+  }
+}
+
+.buttonFilled {
+  background-color: primary;
+  color: white;
+  border: 1px solid primary;
+  &:hover {
+    background-color: primary-dark;
+    border: 1px solid primary-dark;
+  }
+}
+
+.buttonOutlined {
+  background: none;
+  color: primary;
+  border: 1px solid primary;
+  &:hover {
+    color: primary-dark;
+    border: 1px solid primary-dark;
+  }
+}

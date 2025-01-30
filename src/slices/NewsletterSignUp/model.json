@@ -1,0 +1,33 @@
+{
+  "id": "newsletter_sign_up",
+  "type": "SharedSlice",
+  "name": "NewsletterSignUp",
+  "description": "NewsletterSignUp",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "email_address": {
+          "type": "Text",
+          "config": {
+            "label": "Email Address",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

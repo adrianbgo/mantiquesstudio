@@ -1,0 +1,63 @@
+{
+  "id": "link_list",
+  "type": "SharedSlice",
+  "name": "LinkList",
+  "description": "LinkList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "facebook": {
+          "type": "Link",
+          "config": {
+            "label": "Facebook",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "twitter": {
+          "type": "Link",
+          "config": {
+            "label": "Twitter",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "instagram": {
+          "type": "Link",
+          "config": {
+            "label": "Instagram",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "pinterest": {
+          "type": "Link",
+          "config": {
+            "label": "Pinterest",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

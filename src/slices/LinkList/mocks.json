@@ -1,0 +1,45 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"facebook": {
+				"key": "11a09d1b-d4f9-47a5-a34b-7e94377b5903",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "behind"
+				}
+			},
+			"twitter": {
+				"key": "8d24d542-2dd4-4893-b8ff-ae1333421fdc",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "seems"
+				}
+			},
+			"instagram": {
+				"key": "a9987928-0663-43ef-8778-309d32ada6a1",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "energy"
+				}
+			},
+			"pinterest": {
+				"__TYPE__": "LinkContent",
+				"key": "86c86344-6144-4472-bb16-c7b9a5b47ecb",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "student"
+				}
+			}
+		},
+		"items": []
+	}
+]

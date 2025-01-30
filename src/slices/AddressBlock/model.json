@@ -1,0 +1,68 @@
+{
+  "id": "address_block",
+  "type": "SharedSlice",
+  "name": "AddressBlock",
+  "description": "AddressBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "address_line_1": {
+          "type": "Text",
+          "config": {
+            "label": "Address Line 1",
+            "placeholder": ""
+          }
+        },
+        "address_line_2": {
+          "type": "Text",
+          "config": {
+            "label": "Address Line 2",
+            "placeholder": ""
+          }
+        },
+        "city": {
+          "type": "Text",
+          "config": {
+            "label": "City",
+            "placeholder": ""
+          }
+        },
+        "state": {
+          "type": "Text",
+          "config": {
+            "label": "State",
+            "placeholder": ""
+          }
+        },
+        "country": {
+          "type": "Text",
+          "config": {
+            "label": "Country",
+            "placeholder": ""
+          }
+        },
+        "zip_code": {
+          "type": "Text",
+          "config": {
+            "label": "Zip Code",
+            "placeholder": ""
+          }
+        },
+        "phone_number": {
+          "type": "Text",
+          "config": {
+            "label": "Phone Number",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

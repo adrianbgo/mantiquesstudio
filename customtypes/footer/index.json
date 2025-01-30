@@ -1,0 +1,34 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "newsletter_signup": {
+        "type": "Link",
+        "config": {
+          "label": "Newsletter SignUp",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["newsletter_sign_up"]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "link_list": {
+              "type": "SharedSlice"
+            },
+            "address_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

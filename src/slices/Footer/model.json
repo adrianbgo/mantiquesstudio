@@ -10,7 +10,21 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "footer": {
+          "type": "Link",
+          "config": {
+            "label": "Footer",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "footer"
+            ]
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

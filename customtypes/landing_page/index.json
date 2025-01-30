@@ -6,17 +6,29 @@
   "status": true,
   "json": {
     "Main": {
+      "about_section": {
+        "type": "Link",
+        "config": {
+          "label": "About Section",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["about_section"]
+        }
+      },
+      "footer": {
+        "type": "Link",
+        "config": {
+          "label": "Footer",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["footer"]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "footer": {
-              "type": "SharedSlice"
-            },
-            "about_section": {
-              "type": "SharedSlice"
-            },
             "hero": {
               "type": "SharedSlice"
             }

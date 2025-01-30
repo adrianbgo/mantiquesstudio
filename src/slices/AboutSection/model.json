@@ -10,7 +10,21 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "about_section": {
+          "type": "Link",
+          "config": {
+            "label": "About Section",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "about_section"
+            ]
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

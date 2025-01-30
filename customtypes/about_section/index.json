@@ -1,0 +1,36 @@
+{
+  "format": "custom",
+  "id": "about_section",
+  "label": "About Section",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "body": {
+        "type": "Text",
+        "config": {
+          "label": "Body",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "buttons": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

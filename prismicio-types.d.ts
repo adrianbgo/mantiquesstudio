@@ -4,15 +4,135 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type LandingPageDocumentDataSlicesSlice =
-  | FooterSlice
-  | AboutSectionSlice
-  | HeroSlice;
+type AboutSectionDocumentDataSlicesSlice = ButtonsSlice;
+
+/**
+ * Content for About Section documents
+ */
+interface AboutSectionDocumentData {
+  /**
+   * Heading field in *About Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *About Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *About Section*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutSectionDocumentDataSlicesSlice>;
+}
+
+/**
+ * About Section document from Prismic
+ *
+ * - **API ID**: `about_section`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutSectionDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutSectionDocumentData>,
+    "about_section",
+    Lang
+  >;
+
+type FooterDocumentDataSlicesSlice = LinkListSlice | AddressBlockSlice;
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Newsletter SignUp field in *Footer*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_signup
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  newsletter_signup: prismic.ContentRelationshipField<"newsletter_sign_up">;
+
+  /**
+   * Slice Zone field in *Footer*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FooterDocumentDataSlicesSlice>;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+type LandingPageDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Landing Page documents
  */
 interface LandingPageDocumentData {
+  /**
+   * About Section field in *Landing Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.about_section
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  about_section: prismic.ContentRelationshipField<"about_section">;
+
+  /**
+   * Footer field in *Landing Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.footer
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  footer: prismic.ContentRelationshipField<"footer">;
+
   /**
    * Slice Zone field in *Landing Page*
    *
@@ -144,7 +264,26 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = LandingPageDocument | PageDocument;
+export type AllDocumentTypes =
+  | AboutSectionDocument
+  | FooterDocument
+  | LandingPageDocument
+  | PageDocument;
+
+/**
+ * Primary content in *AboutSection → Default → Primary*
+ */
+export interface AboutSectionSliceDefaultPrimary {
+  /**
+   * About Section field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.about_section
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  about_section: prismic.ContentRelationshipField<"about_section">;
+}
 
 /**
  * Default variation for AboutSection Slice
@@ -155,7 +294,7 @@ export type AllDocumentTypes = LandingPageDocument | PageDocument;
  */
 export type AboutSectionSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<AboutSectionSliceDefaultPrimary>,
   never
 >;
 
@@ -174,6 +313,111 @@ type AboutSectionSliceVariation = AboutSectionSliceDefault;
 export type AboutSectionSlice = prismic.SharedSlice<
   "about_section",
   AboutSectionSliceVariation
+>;
+
+/**
+ * Primary content in *AddressBlock → Default → Primary*
+ */
+export interface AddressBlockSliceDefaultPrimary {
+  /**
+   * Address Line 1 field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.address_line_1
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_line_1: prismic.KeyTextField;
+
+  /**
+   * Address Line 2 field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.address_line_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_line_2: prismic.KeyTextField;
+
+  /**
+   * City field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.city
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  city: prismic.KeyTextField;
+
+  /**
+   * State field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.state
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  state: prismic.KeyTextField;
+
+  /**
+   * Country field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.country
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  country: prismic.KeyTextField;
+
+  /**
+   * Zip Code field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.zip_code
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  zip_code: prismic.KeyTextField;
+
+  /**
+   * Phone Number field in *AddressBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: address_block.default.primary.phone_number
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for AddressBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AddressBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AddressBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AddressBlock*
+ */
+type AddressBlockSliceVariation = AddressBlockSliceDefault;
+
+/**
+ * AddressBlock Shared Slice
+ *
+ * - **API ID**: `address_block`
+ * - **Description**: AddressBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AddressBlockSlice = prismic.SharedSlice<
+  "address_block",
+  AddressBlockSliceVariation
 >;
 
 /**
@@ -269,6 +513,21 @@ export type ButtonsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Footer → Default → Primary*
+ */
+export interface FooterSliceDefaultPrimary {
+  /**
+   * Footer field in *Footer → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.default.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  footer: prismic.ContentRelationshipField<"footer">;
+}
+
+/**
  * Default variation for Footer Slice
  *
  * - **API ID**: `default`
@@ -277,7 +536,7 @@ export type ButtonsSlice = prismic.SharedSlice<
  */
 export type FooterSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<FooterSliceDefaultPrimary>,
   never
 >;
 
@@ -368,6 +627,160 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *LinkList → Default → Primary*
+ */
+export interface LinkListSliceDefaultPrimary {
+  /**
+   * Facebook field in *LinkList → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_list.default.primary.facebook
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  facebook: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Twitter field in *LinkList → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_list.default.primary.twitter
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  twitter: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Instagram field in *LinkList → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_list.default.primary.instagram
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Pinterest field in *LinkList → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_list.default.primary.pinterest
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  pinterest: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for LinkList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LinkListSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LinkList*
+ */
+type LinkListSliceVariation = LinkListSliceDefault;
+
+/**
+ * LinkList Shared Slice
+ *
+ * - **API ID**: `link_list`
+ * - **Description**: LinkList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkListSlice = prismic.SharedSlice<
+  "link_list",
+  LinkListSliceVariation
+>;
+
+/**
+ * Primary content in *NewsletterSignUp → Default → Primary*
+ */
+export interface NewsletterSignUpSliceDefaultPrimary {
+  /**
+   * Title field in *NewsletterSignUp → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_sign_up.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Email Address field in *NewsletterSignUp → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_sign_up.default.primary.email_address
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email_address: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for NewsletterSignUp Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSignUpSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSignUpSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewsletterSignUp*
+ */
+type NewsletterSignUpSliceVariation = NewsletterSignUpSliceDefault;
+
+/**
+ * NewsletterSignUp Shared Slice
+ *
+ * - **API ID**: `newsletter_sign_up`
+ * - **Description**: NewsletterSignUp
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSignUpSlice = prismic.SharedSlice<
+  "newsletter_sign_up",
+  NewsletterSignUpSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -433,6 +846,12 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutSectionDocument,
+      AboutSectionDocumentData,
+      AboutSectionDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataSlicesSlice,
       LandingPageDocument,
       LandingPageDocumentData,
       LandingPageDocumentDataSlicesSlice,
@@ -441,20 +860,34 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSectionSlice,
+      AboutSectionSliceDefaultPrimary,
       AboutSectionSliceVariation,
       AboutSectionSliceDefault,
+      AddressBlockSlice,
+      AddressBlockSliceDefaultPrimary,
+      AddressBlockSliceVariation,
+      AddressBlockSliceDefault,
       ButtonsSlice,
       ButtonsSliceDefaultPrimaryButtonsItem,
       ButtonsSliceDefaultPrimary,
       ButtonsSliceVariation,
       ButtonsSliceDefault,
       FooterSlice,
+      FooterSliceDefaultPrimary,
       FooterSliceVariation,
       FooterSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      LinkListSlice,
+      LinkListSliceDefaultPrimary,
+      LinkListSliceVariation,
+      LinkListSliceDefault,
+      NewsletterSignUpSlice,
+      NewsletterSignUpSliceDefaultPrimary,
+      NewsletterSignUpSliceVariation,
+      NewsletterSignUpSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
