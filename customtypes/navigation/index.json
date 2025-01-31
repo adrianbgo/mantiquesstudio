@@ -1,23 +1,22 @@
 {
   "format": "custom",
-  "id": "about_section",
-  "label": "About Section",
-  "repeatable": false,
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
-      "heading": {
+      "name": {
         "type": "Text",
         "config": {
-          "label": "Heading",
+          "label": "Name",
           "placeholder": ""
         }
       },
-      "body": {
-        "type": "Text",
+      "uid": {
+        "type": "UID",
         "config": {
-          "label": "Body",
-          "placeholder": ""
+          "label": "UID"
         }
       },
       "slices": {
@@ -25,7 +24,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "buttons": {
+            "navigation_item": {
               "type": "SharedSlice"
             }
           }

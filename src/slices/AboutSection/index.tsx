@@ -1,6 +1,7 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-
+import styles from "./index.module.css";
+import Button from "@/components/Button";
 /**
  * Props for `AboutSection`.
  */
@@ -14,9 +15,11 @@ const AboutSection = ({ slice }: AboutSectionProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={styles.aboutSection}
     >
-      Placeholder component for about_section (variation: {slice.variation})
-      Slices
+      <h2 className={styles.title}>{slice.primary.title}</h2>
+      <p className={styles.body}>{slice.primary.body}</p>
+      <Button link={slice.primary.about_page} style={"Fill"} text={"Learn More"} />
     </section>
   );
 };

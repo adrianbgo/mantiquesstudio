@@ -1,8 +1,8 @@
 {
-  "id": "about_section",
+  "id": "navigation_item",
   "type": "SharedSlice",
-  "name": "AboutSection",
-  "description": "AboutSection",
+  "name": "NavigationItem",
+  "description": "NavigationItem",
   "variations": [
     {
       "id": "default",
@@ -12,29 +12,26 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
-          "type": "Text",
-          "config": {
-            "label": "Title",
-            "placeholder": ""
-          }
-        },
-        "body": {
-          "type": "Text",
-          "config": {
-            "label": "Body",
-            "placeholder": ""
-          }
-        },
-        "about_page": {
+        "link": {
           "type": "Link",
           "config": {
-            "label": "About Page",
+            "label": "Link",
             "placeholder": "",
             "select": null,
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": false
+          }
+        },
+        "child_links": {
+          "type": "Link",
+          "config": {
+            "label": "Child Links",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
           }
         }
       },

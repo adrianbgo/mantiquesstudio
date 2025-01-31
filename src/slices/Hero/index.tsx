@@ -3,6 +3,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicImage, SliceComponentProps } from "@prismicio/react";
 import styles from './index.module.css';
 import Buttons from "../Buttons";
+import Button from "@/components/Button";
 
 /**
  * Props for `Hero`.
@@ -23,6 +24,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{slice.primary.title}</h1>
           <p className={styles.body}>{slice.primary.body}</p>
+          <Button link={slice.primary.link} text={slice.primary.link.text!} style={"Fill"} />
         </div>
       </div>
     </section>

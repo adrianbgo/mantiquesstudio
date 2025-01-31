@@ -1,0 +1,46 @@
+@value colors: "../../app/styles/vars.css";
+@value black,primary,primary-dark,danger,white,gray from colors;
+
+
+.product {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    padding: 1rem;
+    gap: 1rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: primary-dark;
+    height: 2rem;
+}
+
+.price {
+    color: primary-dark;
+    text-align: center;
+}
+
+.description {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 3.11rem;
+    line-height: 1;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -9,6 +9,8 @@ export const components = {
   footer: dynamic(() => import("./Footer")),
   hero: dynamic(() => import("./Hero")),
   link_list: dynamic(() => import("./LinkList")),
+  navigation_item: dynamic(() => import("./NavigationItem")),
   newsletter_sign_up: dynamic(() => import("./NewsletterSignUp")),
   rich_text: dynamic(() => import("./RichText")),
+  t_est: dynamic(() => import("./TEst")),
 };

@@ -1,8 +1,8 @@
 {
-  "id": "footer",
+  "id": "t_est",
   "type": "SharedSlice",
-  "name": "Footer",
-  "description": "Footer",
+  "name": "TEst",
+  "description": "TEst",
   "variations": [
     {
       "id": "default",
@@ -10,9 +10,7 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": "",
-      "primary": {},
-      "items": {}
+      "imageUrl": ""
     }
   ]
 }

@@ -3,12 +3,23 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"about_section": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "happened",
+				"type": "Text"
+			},
+			"body": {
+				"__TYPE__": "FieldContent",
+				"value": "standard",
+				"type": "Text"
+			},
+			"about_page": {
 				"__TYPE__": "LinkContent",
-				"key": "974a1e5d-c9e2-445b-9092-5c6975a327d9",
+				"key": "6e919bae-6f2f-4cb8-9401-d71d7a0d495d",
 				"value": {
-					"__TYPE__": "DocumentLink",
-					"id": "mock_document_id"
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "paint"
 				}
 			}
 		},

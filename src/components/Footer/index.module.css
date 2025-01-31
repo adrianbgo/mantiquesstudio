@@ -1,0 +1,11 @@
+@value colors: "../../app/styles/vars.css";
+@value black,primary,primary-dark,danger,white from colors;
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background-color: primary-dark;
+    color: white;
+    padding: 1rem;
+}

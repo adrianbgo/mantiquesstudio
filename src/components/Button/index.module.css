@@ -15,21 +15,21 @@
 }
 
 .buttonFilled {
-  background-color: primary;
+  background-color: primary-dark;
   color: white;
-  border: 1px solid primary;
+  border: 1px solid primary-dark;
   &:hover {
-    background-color: primary-dark;
-    border: 1px solid primary-dark;
+    background-color: primary;
+    border: 1px solid primary;
   }
 }
 
 .buttonOutlined {
   background: none;
   color: primary;
-  border: 1px solid primary;
+  border: 1px solid primary-dark;
   &:hover {
-    color: primary-dark;
-    border: 1px solid primary-dark;
+    color: primary;
+    border: 1px solid primary;
   }
 }

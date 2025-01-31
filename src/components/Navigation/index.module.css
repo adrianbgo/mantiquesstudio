@@ -1,0 +1,32 @@
+@value colors: "../../app/styles/vars.css";
+@value black,primary,primary-dark,danger,white from colors;
+
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+    margin: 0;
+    padding: 0.5rem 2rem;
+    width: 100%;
+    background-color: primary-dark;
+}
+
+.title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.navLinkContainer {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navLink>a {
+    color: white;
+    &:hover {
+        filter: brightness(80%);
+    }
+}

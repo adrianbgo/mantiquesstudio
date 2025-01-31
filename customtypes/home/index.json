@@ -1,50 +1,20 @@
 {
   "format": "page",
-  "id": "landing_page",
-  "label": "Landing Page",
+  "id": "home",
+  "label": "home",
   "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "about_section": {
-        "type": "Link",
-        "config": {
-          "label": "About Section",
-          "select": "document",
-          "repeat": false,
-          "customtypes": ["about_section"]
-        }
-      },
-      "footer": {
-        "type": "Link",
-        "config": {
-          "label": "Footer",
-          "select": "document",
-          "repeat": false,
-          "customtypes": ["footer"]
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "newsletter_sign_up": {
-              "type": "SharedSlice"
-            },
-            "address_block": {
-              "type": "SharedSlice"
-            },
-            "buttons": {
+            "hero": {
               "type": "SharedSlice"
             },
             "about_section": {
-              "type": "SharedSlice"
-            },
-            "link_list": {
-              "type": "SharedSlice"
-            },
-            "hero": {
               "type": "SharedSlice"
             }
           }

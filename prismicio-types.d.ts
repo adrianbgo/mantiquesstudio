@@ -4,79 +4,15 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutSectionDocumentDataSlicesSlice = ButtonsSlice;
-
-/**
- * Content for About Section documents
- */
-interface AboutSectionDocumentData {
-  /**
-   * Heading field in *About Section*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_section.heading
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  heading: prismic.KeyTextField;
-
-  /**
-   * Body field in *About Section*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_section.body
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  body: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *About Section*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_section.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<AboutSectionDocumentDataSlicesSlice>;
-}
-
-/**
- * About Section document from Prismic
- *
- * - **API ID**: `about_section`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type AboutSectionDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<AboutSectionDocumentData>,
-    "about_section",
-    Lang
-  >;
-
-type FooterDocumentDataSlicesSlice = LinkListSlice | AddressBlockSlice;
+type FooterDocumentDataSlicesSlice =
+  | LinkListSlice
+  | NewsletterSignUpSlice
+  | AddressBlockSlice;
 
 /**
  * Content for Footer documents
  */
 interface FooterDocumentData {
-  /**
-   * Newsletter SignUp field in *Footer*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.newsletter_signup
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  newsletter_signup: prismic.ContentRelationshipField<"newsletter_sign_up">;
-
   /**
    * Slice Zone field in *Footer*
    *
@@ -93,19 +29,82 @@ interface FooterDocumentData {
  * Footer document from Prismic
  *
  * - **API ID**: `footer`
- * - **Repeatable**: `false`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type FooterDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<FooterDocumentData>,
-    "footer",
-    Lang
-  >;
+  prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
-type LandingPageDocumentDataSlicesSlice = HeroSlice;
+type HomeDocumentDataSlicesSlice = HeroSlice | AboutSectionSlice;
+
+/**
+ * Content for home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Slice Zone field in *home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
+   * Meta Title field in *home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
+type LandingPageDocumentDataSlicesSlice =
+  | NewsletterSignUpSlice
+  | AddressBlockSlice
+  | ButtonsSlice
+  | AboutSectionSlice
+  | LinkListSlice
+  | HeroSlice;
 
 /**
  * Content for Landing Page documents
@@ -192,6 +191,51 @@ export type LandingPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Name field in *Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = RichTextSlice;
 
 /**
@@ -265,9 +309,10 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes =
-  | AboutSectionDocument
   | FooterDocument
+  | HomeDocument
   | LandingPageDocument
+  | NavigationDocument
   | PageDocument;
 
 /**
@@ -275,14 +320,40 @@ export type AllDocumentTypes =
  */
 export interface AboutSectionSliceDefaultPrimary {
   /**
-   * About Section field in *AboutSection → Default → Primary*
+   * Title field in *AboutSection → Default → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_section.default.primary.about_section
+   * - **API ID Path**: about_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Body field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+
+  /**
+   * About Page field in *AboutSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_section.default.primary.about_page
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  about_section: prismic.ContentRelationshipField<"about_section">;
+  about_page: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
@@ -513,21 +584,6 @@ export type ButtonsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Footer → Default → Primary*
- */
-export interface FooterSliceDefaultPrimary {
-  /**
-   * Footer field in *Footer → Default → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.default.primary.footer
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  footer: prismic.ContentRelationshipField<"footer">;
-}
-
-/**
  * Default variation for Footer Slice
  *
  * - **API ID**: `default`
@@ -536,7 +592,7 @@ export interface FooterSliceDefaultPrimary {
  */
 export type FooterSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<FooterSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
@@ -726,6 +782,63 @@ export type LinkListSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *NavigationItem → Default → Primary*
+ */
+export interface NavigationItemSliceDefaultPrimary {
+  /**
+   * Link field in *NavigationItem → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Child Links field in *NavigationItem → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.default.primary.child_links
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  child_links: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Default variation for NavigationItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavigationItemSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavigationItem*
+ */
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
+
+/**
+ * NavigationItem Shared Slice
+ *
+ * - **API ID**: `navigation_item`
+ * - **Description**: NavigationItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationItemSlice = prismic.SharedSlice<
+  "navigation_item",
+  NavigationItemSliceVariation
+>;
+
+/**
  * Primary content in *NewsletterSignUp → Default → Primary*
  */
 export interface NewsletterSignUpSliceDefaultPrimary {
@@ -825,6 +938,33 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Default variation for TEst Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TEstSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *TEst*
+ */
+type TEstSliceVariation = TEstSliceDefault;
+
+/**
+ * TEst Shared Slice
+ *
+ * - **API ID**: `t_est`
+ * - **Description**: TEst
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TEstSlice = prismic.SharedSlice<"t_est", TEstSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -846,15 +986,18 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      AboutSectionDocument,
-      AboutSectionDocumentData,
-      AboutSectionDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       LandingPageDocument,
       LandingPageDocumentData,
       LandingPageDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -873,7 +1016,6 @@ declare module "@prismicio/client" {
       ButtonsSliceVariation,
       ButtonsSliceDefault,
       FooterSlice,
-      FooterSliceDefaultPrimary,
       FooterSliceVariation,
       FooterSliceDefault,
       HeroSlice,
@@ -884,6 +1026,10 @@ declare module "@prismicio/client" {
       LinkListSliceDefaultPrimary,
       LinkListSliceVariation,
       LinkListSliceDefault,
+      NavigationItemSlice,
+      NavigationItemSliceDefaultPrimary,
+      NavigationItemSliceVariation,
+      NavigationItemSliceDefault,
       NewsletterSignUpSlice,
       NewsletterSignUpSliceDefaultPrimary,
       NewsletterSignUpSliceVariation,
@@ -892,6 +1038,9 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      TEstSlice,
+      TEstSliceVariation,
+      TEstSliceDefault,
     };
   }
 }
