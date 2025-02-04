@@ -24,7 +24,7 @@
     align-items: center;
 }
 
-.navLink>a {
+.navLink {
     color: white;
     &:hover {
         filter: brightness(80%);
