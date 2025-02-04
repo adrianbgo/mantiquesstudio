@@ -19,7 +19,7 @@ const AboutSection = ({ slice }: AboutSectionProps): JSX.Element => {
     >
       <h2 className={styles.title}>{slice.primary.title}</h2>
       <p className={styles.body}>{slice.primary.body}</p>
-      <Button link={slice.primary.about_page} style={"Fill"} text={"Learn More"} />
+      <Button link={slice.primary.about_page} style={"Fill"} text={"Learn More"} key={""} />
     </section>
   );
 };
