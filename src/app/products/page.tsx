@@ -4,7 +4,7 @@ import ProductListings from '@/components/ProductListings';
 
 
 const ProductsPage = async () => {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/etsy`);
+    const data = await fetch(`${process.env.URL}/api/etsy`);
     const listings = await data.json();
 
   return (
