@@ -12,7 +12,7 @@ export type FeaturedProductsProps =
  * Component for "FeaturedProducts" Slices.
  */
 const FeaturedProducts = async ({ slice }: FeaturedProductsProps): Promise<React.JSX.Element> => {
-  const data = await fetch(`${process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_URL : "http://localhost:3000"}/api/etsy/featured`)
+  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/etsy/featured`)
   const listings = await data.json();
 
   return (
