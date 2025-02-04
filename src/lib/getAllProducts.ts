@@ -1,5 +1,3 @@
-"use server" 
-
 export const getAllProducts = async () => {
     const mockResponse =  Response.json({
         count: 2,
