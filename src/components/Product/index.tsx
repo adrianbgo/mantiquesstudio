@@ -1,4 +1,4 @@
-import { IEtsyInfo, Listing } from '@/app/api/etsy/route'
+import { IEtsyInfo, Listing } from '@/types'
 import Image from 'next/image'
 import React from 'react'
 import Button from '../Button'
@@ -13,7 +13,7 @@ const Product: React.FC<Listing> = ({title,description,images,price,url }) => {
         <p className={styles.title}>{title}</p>
         <p className={styles.price}>${price.amount.toFixed(2)}</p>
         <p className={styles.description}>{description}</p>
-        <Button link={url} style="Fill" text={"Buy Now"} />
+        <Button link={url} style="Fill" text={"Buy Now"} key={""} />
     </div>
   )
 }
