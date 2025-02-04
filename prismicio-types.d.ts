@@ -237,7 +237,17 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice =
+  | FeaturedProductsSlice
+  | HeroSlice
+  | NewsletterSignUpSlice
+  | LinkListSlice
+  | FooterSlice
+  | NavigationItemSlice
+  | ButtonsSlice
+  | AddressBlockSlice
+  | AboutSectionSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -246,13 +256,24 @@ interface PageDocumentData {
   /**
    * Title field in *Page*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: page.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.TitleField;
+  title: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.featured_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Page*
