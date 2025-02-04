@@ -7,10 +7,11 @@ import Link from 'next/link';
 interface IButton {
     link: LinkField | string,
     style: KeyTextField | string,
-    text: KeyTextField | string
+    text: KeyTextField | string,
+    key: string
 }
 
-const Button: React.FC<IButton> = ({link,style,text}) => {
+const Button: React.FC<IButton> = ({link,style,text,key}) => {
   return (
     <>
     {
@@ -18,6 +19,7 @@ const Button: React.FC<IButton> = ({link,style,text}) => {
         <Link 
           href={link}             
           className={`${styles.button} ${style == "Fill" ? styles.buttonFilled : styles.buttonOutlined}`}
+          key={key}
         >
           {text}
         </Link>
@@ -25,6 +27,7 @@ const Button: React.FC<IButton> = ({link,style,text}) => {
         <PrismicNextLink 
             field={link}
             className={`${styles.button} ${style == "Fill" ? styles.buttonFilled : styles.buttonOutlined}`}
+            key={key}
         >
             {text}
         </PrismicNextLink>
