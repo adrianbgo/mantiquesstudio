@@ -24,7 +24,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{slice.primary.title}</h1>
           <p className={styles.body}>{slice.primary.body}</p>
-          <Button link={slice.primary.link} text={slice.primary.link.text!} style={"Fill"} />
+          <Button link={slice.primary.link} text={slice.primary.link.text!} style={"Fill"} key={""}/>
         </div>
       </div>
     </section>
