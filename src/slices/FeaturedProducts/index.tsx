@@ -2,6 +2,7 @@ import ProductListings from "@/components/ProductListings";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import styles from './index.module.css'
+import { getFeaturedProducts } from "@/lib/getFeaturedProducts";
 /**
  * Props for `FeaturedProducts`.
  */
@@ -12,7 +13,7 @@ export type FeaturedProductsProps =
  * Component for "FeaturedProducts" Slices.
  */
 const FeaturedProducts = async ({ slice }: FeaturedProductsProps): Promise<React.JSX.Element> => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/etsy/featured`)
+  const data = await getFeaturedProducts();
   const listings = await data.json();
 
   return (

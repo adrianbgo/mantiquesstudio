@@ -1,8 +1,6 @@
-"use server";
+"use server" 
 
-import { NextRequest } from "next/server";
-
-export async function GET(request: NextRequest) {
+export const getAllProducts = async () => {
     return Response.json({
         count: 1,
         results: [

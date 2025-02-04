@@ -1,7 +1,6 @@
 import { IEtsyInfo } from "@/types";
-import { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest) {
+export const getFeaturedProducts = async () => {
     const mockResponse: IEtsyInfo = {
         count: 5,
         results: [
