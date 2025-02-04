@@ -1,8 +1,8 @@
 "use server" 
 
 export const getAllProducts = async () => {
-    return Response.json({
-        count: 1,
+    const mockResponse =  Response.json({
+        count: 2,
         results: [
             {
                 title: "Bar Cabinet with Bluetooth",
@@ -38,4 +38,6 @@ export const getAllProducts = async () => {
             }
         ]
     });
+
+    return mockResponse;
 }
