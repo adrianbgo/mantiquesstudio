@@ -8,7 +8,7 @@ interface IButton {
     link: LinkField | string,
     style: KeyTextField | string,
     text: KeyTextField | string,
-    key: string
+    key: KeyTextField | string
 }
 
 const Button: React.FC<IButton> = ({link,style,text,key}) => {
