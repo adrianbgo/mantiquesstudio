@@ -1,3 +1,5 @@
+"use server"
+
 import { IEtsyInfo } from "@/types";
 
 export const getFeaturedProducts = async () => {
