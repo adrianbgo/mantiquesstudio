@@ -18,7 +18,7 @@ const Buttons = ({ slice }: ButtonsProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.buttons.map(b => (
-        <Button link={b.link} text={b.text} style={b.style} />
+        <Button link={b.link} text={b.text} style={b.style} key={b.text} />
       ))}
     </section>
   );
