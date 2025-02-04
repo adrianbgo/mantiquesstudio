@@ -13,13 +13,12 @@ interface IButton {
 
 const Button: React.FC<IButton> = ({link,style,text,key}) => {
   return (
-    <>
+    <div key={key}>
     {
       (typeof link === "string") ? (
         <Link 
           href={link}             
           className={`${styles.button} ${style == "Fill" ? styles.buttonFilled : styles.buttonOutlined}`}
-          key={key}
         >
           {text}
         </Link>
@@ -27,13 +26,12 @@ const Button: React.FC<IButton> = ({link,style,text,key}) => {
         <PrismicNextLink 
             field={link}
             className={`${styles.button} ${style == "Fill" ? styles.buttonFilled : styles.buttonOutlined}`}
-            key={key}
         >
             {text}
         </PrismicNextLink>
       )
     }
-    </>
+    </div>
   )
 }
 
