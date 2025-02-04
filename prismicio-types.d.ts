@@ -99,6 +99,7 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 type LandingPageDocumentDataSlicesSlice =
+  | FeaturedProductsSlice
   | NewsletterSignUpSlice
   | AddressBlockSlice
   | ButtonsSlice
@@ -584,6 +585,81 @@ export type ButtonsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FeaturedProducts → Default → Primary*
+ */
+export interface FeaturedProductsSliceDefaultPrimary {
+  /**
+   * Title field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for FeaturedProducts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedProductsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *FeaturedProducts → Centered → Primary*
+ */
+export interface FeaturedProductsSliceCenteredPrimary {
+  /**
+   * Title field in *FeaturedProducts → Centered → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.centered.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Centered variation for FeaturedProducts Slice
+ *
+ * - **API ID**: `centered`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSliceCentered = prismic.SharedSliceVariation<
+  "centered",
+  Simplify<FeaturedProductsSliceCenteredPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedProducts*
+ */
+type FeaturedProductsSliceVariation =
+  | FeaturedProductsSliceDefault
+  | FeaturedProductsSliceCentered;
+
+/**
+ * FeaturedProducts Shared Slice
+ *
+ * - **API ID**: `featured_products`
+ * - **Description**: FeaturedProducts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSlice = prismic.SharedSlice<
+  "featured_products",
+  FeaturedProductsSliceVariation
+>;
+
+/**
  * Default variation for Footer Slice
  *
  * - **API ID**: `default`
@@ -794,18 +870,6 @@ export interface NavigationItemSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Child Links field in *NavigationItem → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation_item.default.primary.child_links
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  child_links: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
 }
 
 /**
@@ -938,33 +1002,6 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
-/**
- * Default variation for TEst Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TEstSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *TEst*
- */
-type TEstSliceVariation = TEstSliceDefault;
-
-/**
- * TEst Shared Slice
- *
- * - **API ID**: `t_est`
- * - **Description**: TEst
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TEstSlice = prismic.SharedSlice<"t_est", TEstSliceVariation>;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1015,6 +1052,12 @@ declare module "@prismicio/client" {
       ButtonsSliceDefaultPrimary,
       ButtonsSliceVariation,
       ButtonsSliceDefault,
+      FeaturedProductsSlice,
+      FeaturedProductsSliceDefaultPrimary,
+      FeaturedProductsSliceCenteredPrimary,
+      FeaturedProductsSliceVariation,
+      FeaturedProductsSliceDefault,
+      FeaturedProductsSliceCentered,
       FooterSlice,
       FooterSliceVariation,
       FooterSliceDefault,
@@ -1038,9 +1081,6 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
-      TEstSlice,
-      TEstSliceVariation,
-      TEstSliceDefault,
     };
   }
 }

@@ -1,6 +1,7 @@
 import { createClient } from "@/prismicio"
 import { PrismicNextLink } from "@prismicio/next";
 import styles from './index.module.css'
+import Link from "next/link";
 
 const Navigation = async () => {
     const client = createClient();
@@ -14,16 +15,6 @@ const Navigation = async () => {
                 {navigation.data.slices.map((slice) => (
                     <li key={slice.id} className={styles.navLink}>
                         <PrismicNextLink field={slice.primary.link} />
-                        {/* Renders child links */}
-                        {slice.primary.child_links.length > 0 && (
-                            <ul>
-                                {slice.primary.child_links.map(l => (
-                                    <li key={JSON.stringify(l)}>
-                                        <PrismicNextLink field={l} />
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
                     </li>
                 ))}
             </ul>

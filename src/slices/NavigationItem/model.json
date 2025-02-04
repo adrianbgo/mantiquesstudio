@@ -22,17 +22,6 @@
             "allowText": true,
             "repeat": false
           }
-        },
-        "child_links": {
-          "type": "Link",
-          "config": {
-            "label": "Child Links",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": true
-          }
         }
       },
       "items": {}

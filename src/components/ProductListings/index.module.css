@@ -2,3 +2,15 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.productListingsCentered {
+    grid-template-columns: repeat(3, 1fr);
+}

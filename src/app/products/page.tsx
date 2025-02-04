@@ -1,5 +1,4 @@
 import React from 'react'
-import { IEtsyInfo } from '../api/etsy/route'
 import ProductListings from '@/components/ProductListings';
 
 
@@ -9,7 +8,7 @@ const ProductsPage = async () => {
     const listings = await data.json();
 
   return (
-    <ProductListings count={listings.count} results={listings.results} />
+    <ProductListings count={listings.count} results={listings.results} centered={false}/>
   )
 }
 

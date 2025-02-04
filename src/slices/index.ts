@@ -6,11 +6,11 @@ export const components = {
   about_section: dynamic(() => import("./AboutSection")),
   address_block: dynamic(() => import("./AddressBlock")),
   buttons: dynamic(() => import("./Buttons")),
+  featured_products: dynamic(() => import("./FeaturedProducts")),
   footer: dynamic(() => import("./Footer")),
   hero: dynamic(() => import("./Hero")),
   link_list: dynamic(() => import("./LinkList")),
   navigation_item: dynamic(() => import("./NavigationItem")),
   newsletter_sign_up: dynamic(() => import("./NewsletterSignUp")),
   rich_text: dynamic(() => import("./RichText")),
-  t_est: dynamic(() => import("./TEst")),
 };
