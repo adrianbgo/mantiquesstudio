@@ -13,7 +13,7 @@ interface IButton {
 
 const Button: React.FC<IButton> = ({link,style,text,key}) => {
   return (
-    <div key={key}>
+    <div key={key!.toString()}>
     {
       (typeof link === "string") ? (
         <Link 
