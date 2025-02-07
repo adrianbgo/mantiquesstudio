@@ -3,7 +3,7 @@
 
 .navigation {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     margin: 0;
     padding: 0.5rem 2rem;
@@ -14,6 +14,7 @@
 .title {
     font-size: 2rem;
     margin: 0;
+    color: white;
 }
 
 .navLinkContainer {
@@ -28,5 +29,48 @@
     color: white;
     &:hover {
         filter: brightness(80%);
+    }
+}
+
+.check {
+    display: none;
+}
+
+.bars {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .navLinkContainer {
+        position: fixed;
+        top: 3rem;
+        right: -100%;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 1rem;
+        text-align: center;
+        background-color: primary-dark;
+        z-index: 10000;
+        transition: all 0.3s;
+    }
+    .navLink {
+        padding: 1rem;
+    }
+
+    .bars {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: white;
+    }
+
+    .toggle {
+        font-size: 1.5rem;
+    }
+
+    .check:checked ~ .navLinkContainer {
+        right: 0;
+        
     }
 }

@@ -6,13 +6,13 @@ import { IEtsyInfo, Listing } from "@/types";
 interface IProductListings {
   count: number,
   results: Listing[],
-  centered: boolean
+  featured: boolean
 }
 
-const ProductListings = ({count, results, centered=false}: IProductListings) => {
+const ProductListings = ({count, results, featured=false}: IProductListings) => {
   return (
-    <div className={centered ? styles.centered : ""}>
-      <div className={`${styles.productListings} ${centered ? styles.productListingsCentered : ""}`}>
+    <div className={`${styles.centered}`}>
+      <div className={`${styles.productListings} ${featured ? styles.featuredProductListings : ""}`}>
           {results.map(r => (
               <Product title={r.title} url={r.url} description={r.description} images={r.images} price={r.price} key={r.title} />
           ))}

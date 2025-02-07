@@ -9,4 +9,14 @@
     color: white;
     padding: 1rem;
     width: 100%;
+    position: relative;
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: min-content;
+    }
 }

@@ -9,7 +9,7 @@ const ProductsPage = async () => {
     const listings = await data.json();
 
   return (
-    <ProductListings count={listings.count} results={listings.results} centered={false}/>
+    <ProductListings count={listings.count} results={listings.results} featured={false}/>
   )
 }
 

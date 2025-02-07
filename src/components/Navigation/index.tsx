@@ -3,6 +3,7 @@ import { PrismicNextLink } from "@prismicio/next";
 import styles from './index.module.css'
 import Link from "next/link";
 import { asText } from "@prismicio/client";
+import { FaBars } from "react-icons/fa";
 
 const Navigation = async () => {
     const client = createClient();
@@ -11,7 +12,11 @@ const Navigation = async () => {
     const homePage = await client.getSingle("landing_page");
     return (
         <nav className={styles.navigation}>
-            <PrismicNextLink href={"/"} className={styles.navLink}><h1 className={styles.title}>{navigation.data.name}</h1></PrismicNextLink>
+            <PrismicNextLink href={"/"}><h1 className={styles.title}>{navigation.data.name}</h1></PrismicNextLink>
+            <input type="checkbox" className={styles.check} id="check"/>
+            <label htmlFor="check" className={styles.bars}>
+                <FaBars className={styles.toggle} />
+            </label>
             <ul className={styles.navLinkContainer}>
                 {
                     navLinks.map(link => (

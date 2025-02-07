@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import styles from './index.module.css'
 import { getFeaturedProducts } from "@/lib/getFeaturedProducts";
+import { FaBars } from "react-icons/fa";
 /**
  * Props for `FeaturedProducts`.
  */
@@ -23,7 +24,7 @@ const FeaturedProducts = async ({ slice }: FeaturedProductsProps): Promise<React
       className={slice.variation == "centered" ? styles.productListingSectionCentered : styles.productListingSection}
     >
       <h2 className={styles.heading}>{slice.primary.title}</h2>
-      <ProductListings count={listings.count} results={listings.results} centered={slice.variation == "centered"}/>
+      <ProductListings count={listings.count} results={listings.results} featured={slice.variation == "centered"}/>
     </section>
   );
 };
